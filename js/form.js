@@ -8,8 +8,6 @@ function mostraMensagem(event) {
 
   var paciente = obtemInformacao(form);
 
-  var trPaciente = montaTr(paciente);
-
   var erros = validaPaciente(paciente);
 
   if (erros.length > 0) {
@@ -17,10 +15,7 @@ function mostraMensagem(event) {
 
     return;
   }
-  var tabela = document.querySelector("#tabela-pacientes");
-
-  tabela.appendChild(trPaciente);
-
+  adionaPacienteNaTabela(paciente);
   form.reset();
 
   var mensagensErro = document.querySelector("#mensagens-erro");
@@ -80,4 +75,10 @@ function exibeMensagensDeErro(erros) {
     li.textContent = erro;
     ul.appendChild(li);
   });
+}
+
+function adionaPacienteNaTabela(paciente) {
+  var trPaciente = montaTr(paciente);
+  var tabela = document.querySelector("#tabela-pacientes");
+  tabela.appendChild(trPaciente);
 }
